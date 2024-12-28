@@ -1,2 +1,3 @@
-keylog.txt
+events.log
 __pycache__/
+evdev_reader

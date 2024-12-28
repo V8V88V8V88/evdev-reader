@@ -1,8 +1,14 @@
+import sys
+
 from evdev import InputDevice, categorize, ecodes
 
-device = InputDevice('/dev/input/event2')
+if len(sys.argv) != 2:
+    print(f"Usage: {sys.argv[0]} <input_device>", file=sys.stderr)
+    sys.exit(1)
 
-with open("keylog.txt", "a") as log_file:
+device = InputDevice(sys.argv[1])
+
+with open("events.log", "a") as log_file:
     for event in device.read_loop():
         if event.type == ecodes.EV_KEY:
             key_event = categorize(event)
